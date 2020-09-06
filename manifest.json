@@ -4,7 +4,13 @@
   "description": "Open the link on github in another tab",
   "manifest_version": 2,
   "permissions": ["activeTab", "declarativeContent", "storage"],
-  "browser_action": {
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "page_action": {
     "default_popup": "hello.html",
     "default_icon": {
       "16": "images/get_started16.png",
