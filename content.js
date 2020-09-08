@@ -1,3 +1,11 @@
+const promiseArr = [];
+
+promiseArr.push(getLocalStorageData("pullRequest"));
+promiseArr.push(getLocalStorageData("repositoryNavbar"));
+promiseArr.push(getLocalStorageData("conversationLinks"));
+Promise.all(promiseArr).then(function (res) {
+  console.log(res);
+});
 // Pull Request navbar
 const prTabs = document.querySelectorAll("a.tabnav-tab");
 const prTabsObject = createElementObject(prTabs);
@@ -37,4 +45,14 @@ function createElementObject(elements) {
     obj[element.href] = element;
   }
   return obj;
+}
+
+function getLocalStorageData(key) {
+  return new Promise(function (res, rej) {
+    chrome.runtime.sendMessage({ method: "getItem", key: key }, function (
+      response
+    ) {
+      res(response.data);
+    });
+  });
 }
