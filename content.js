@@ -9,13 +9,11 @@ promiseArr.push(getLocalStorageData("pullRequest"));
 promiseArr.push(getLocalStorageData("repositoryNavbar"));
 promiseArr.push(getLocalStorageData("conversationLinks"));
 
-Promise.all(promiseArr).then(function (res) {
+Promise.all(promiseArr).then(function (promiseRes) {
   // localStorageに保存されている有効な設定のみEventListenerを設定する
-  for (value of res) {
-    if (value) continue;
-  }
-  console.log(res);
-  for (key in selectorParams) {
+  console.log(promiseRes);
+  for (key in promiseRes) {
+    if (!promiseRes[key]) continue;
     let object = createElementObject(
       document.querySelectorAll(selectorParams[key])
     );
@@ -51,7 +49,10 @@ function getLocalStorageData(key) {
     chrome.runtime.sendMessage({ method: "getItem", key: key }, function (
       response
     ) {
-      res(response.data);
+      // キーを元にオブジェクトを作成しtrue or false を返却
+      res({
+        [key]: response.data,
+      });
     });
   });
 }
