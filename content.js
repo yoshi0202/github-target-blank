@@ -1,28 +1,27 @@
 const promiseArr = [];
+const selectorParams = {
+  prTabs: "a.tabnav-tab", // Pull Request navbar
+  repositoryNavbars: "a.js-responsive-underlinenav-item", // Repository navbar
+  conversationLinks: ".markdown-body p a", // Conversation links
+};
 
 promiseArr.push(getLocalStorageData("pullRequest"));
 promiseArr.push(getLocalStorageData("repositoryNavbar"));
 promiseArr.push(getLocalStorageData("conversationLinks"));
+
 Promise.all(promiseArr).then(function (res) {
+  // localStorageに保存されている有効な設定のみEventListenerを設定する
+  for (value of res) {
+    if (value) continue;
+  }
   console.log(res);
+  for (key in selectorParams) {
+    let object = createElementObject(
+      document.querySelectorAll(selectorParams[key])
+    );
+    createAddEventListenner(object);
+  }
 });
-// Pull Request navbar
-const prTabs = document.querySelectorAll("a.tabnav-tab");
-const prTabsObject = createElementObject(prTabs);
-createAddEventListenner(prTabsObject);
-
-// Repository navbar
-const repositoryNavbars = document.querySelectorAll(
-  "a.js-responsive-underlinenav-item"
-);
-const repositoryNavbarsObject = createElementObject(repositoryNavbars);
-createAddEventListenner(repositoryNavbarsObject);
-
-// Conversation links
-const conversationLinks = document.querySelectorAll(".markdown-body p a");
-const conversationLinksObject = createElementObject(conversationLinks);
-createAddEventListenner(conversationLinksObject);
-
 function createAddEventListenner(object) {
   for (url in object) {
     object[url].url = url;
