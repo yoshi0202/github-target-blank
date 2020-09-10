@@ -1,7 +1,7 @@
 const promiseArr = [];
 const selectorParams = {
-  prTabs: "a.tabnav-tab", // Pull Request navbar
-  repositoryNavbars: "a.js-responsive-underlinenav-item", // Repository navbar
+  pullRequest: "a.tabnav-tab", // Pull Request navbar
+  repositoryNavbar: "a.js-responsive-underlinenav-item", // Repository navbar
   conversationLinks: ".markdown-body p a", // Conversation links
 };
 
@@ -11,9 +11,10 @@ promiseArr.push(getLocalStorageData("conversationLinks"));
 
 Promise.all(promiseArr).then(function (promiseRes) {
   // localStorageに保存されている有効な設定のみEventListenerを設定する
-  console.log(promiseRes);
-  for (key in promiseRes) {
-    if (!promiseRes[key]) continue;
+  for (i of promiseRes) {
+    const key = Object.keys(i)[0];
+    if (!i[key]) continue;
+    console.log("true");
     let object = createElementObject(
       document.querySelectorAll(selectorParams[key])
     );
