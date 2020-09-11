@@ -1,9 +1,10 @@
 import { createPromiseArray } from "./assets/util";
-import { selectorParams } from "./assets/const";
+import { selectorParams, observerSettings } from "./assets/const";
 
 class Content {
   constructor() {
     this.promiseArr = createPromiseArray();
+    this.createMutationObject();
   }
   async main() {
     const promiseRes = await Promise.all(this.promiseArr);
@@ -21,7 +22,7 @@ class Content {
   createAddEventListenner(object) {
     for (const url in object) {
       object[url].url = url;
-      object[url].addEventListener("click", function (e) {
+      const listenerFunction = function (e) {
         const evt = new MouseEvent("click", {
           metaKey: true,
         });
@@ -29,7 +30,9 @@ class Content {
         a.href = e.currentTarget.url;
         a.dispatchEvent(evt);
         e.preventDefault();
-      });
+      };
+      object[url].removeEventListener("click", listenerFunction);
+      object[url].addEventListener("click", listenerFunction);
     }
   }
 
@@ -40,6 +43,16 @@ class Content {
       obj[element.href] = element;
     }
     return obj;
+  }
+
+  createMutationObject() {
+    const target = document.getElementById(observerSettings.selector);
+    if (target) {
+      const observer = new MutationObserver((mutations) => {
+        this.main();
+      });
+      observer.observe(target, observerSettings.config);
+    }
   }
 }
 
