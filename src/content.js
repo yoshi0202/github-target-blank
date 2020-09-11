@@ -24,7 +24,8 @@ class Content {
       object[url].url = url;
       const listenerFunction = function (e) {
         const evt = new MouseEvent("click", {
-          metaKey: true,
+          metaKey: true, // MacOS
+          ctrlKey: true, // WindowsOS
         });
         const a = document.createElement("a");
         a.href = e.currentTarget.url;
