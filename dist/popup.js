@@ -90,11 +90,11 @@
 /*!*****************************!*\
   !*** ./src/assets/const.js ***!
   \*****************************/
-/*! exports provided: selectorParams, observerSettings */
+/*! exports provided: selectorParams, observerSettings, extensionHostName */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"selectorParams\", function() { return selectorParams; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"observerSettings\", function() { return observerSettings; });\nconst selectorParams = {\n  pullRequest: \"a.tabnav-tab\", // Pull Request navbar\n  repositoryNavbar: \"a.js-responsive-underlinenav-item\", // Repository navbar\n  conversationLinks: \".markdown-body p a\", // Conversation links\n};\n\nconst observerSettings = {\n  selector: \"js-repo-pjax-container\",\n  config: {\n    childList: true,\n  },\n};\n\n\n\n\n//# sourceURL=webpack:///./src/assets/const.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"selectorParams\", function() { return selectorParams; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"observerSettings\", function() { return observerSettings; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"extensionHostName\", function() { return extensionHostName; });\nconst selectorParams = {\n  pullRequest: \"a.tabnav-tab\", // Pull Request navbar\n  repositoryNavbar: \"a.js-responsive-underlinenav-item\", // Repository navbar\n  conversationLinks: \".markdown-body p a\", // Conversation links\n};\n\nconst observerSettings = {\n  selector: \"js-repo-pjax-container\",\n  config: {\n    childList: true,\n  },\n};\n\nconst extensionHostName = \"github.com\";\n\n\n\n\n//# sourceURL=webpack:///./src/assets/const.js?");
 
 /***/ }),
 
