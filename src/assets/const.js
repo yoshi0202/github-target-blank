@@ -11,4 +11,6 @@ const observerSettings = {
   },
 };
 
-export { selectorParams, observerSettings };
+const extensionHostName = "github.com";
+
+export { selectorParams, observerSettings, extensionHostName };
