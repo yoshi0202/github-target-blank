@@ -90,10 +90,11 @@
 /*!*****************************!*\
   !*** ./src/assets/const.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: selectorParams, observerSettings */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("const selectorParams = {\n  pullRequest: \"a.tabnav-tab\", // Pull Request navbar\n  repositoryNavbar: \"a.js-responsive-underlinenav-item\", // Repository navbar\n  conversationLinks: \".markdown-body p a\", // Conversation links\n};\n\nmodule.exports = {\n  selectorParams: selectorParams,\n};\n\n\n//# sourceURL=webpack:///./src/assets/const.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"selectorParams\", function() { return selectorParams; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"observerSettings\", function() { return observerSettings; });\nconst selectorParams = {\n  pullRequest: \"a.tabnav-tab\", // Pull Request navbar\n  repositoryNavbar: \"a.js-responsive-underlinenav-item\", // Repository navbar\n  conversationLinks: \".markdown-body p a\", // Conversation links\n};\n\nconst observerSettings = {\n  selector: \"js-repo-pjax-container\",\n  config: {\n    childList: true,\n  },\n};\n\n\n\n\n//# sourceURL=webpack:///./src/assets/const.js?");
 
 /***/ }),
 
@@ -105,7 +106,7 @@ eval("const selectorParams = {\n  pullRequest: \"a.tabnav-tab\", // Pull Request
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getLocalStorageData\", function() { return getLocalStorageData; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"createPromiseArray\", function() { return createPromiseArray; });\n/* harmony import */ var _const__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./const */ \"./src/assets/const.js\");\n/* harmony import */ var _const__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_const__WEBPACK_IMPORTED_MODULE_0__);\n\nfunction getLocalStorageData(key) {\n  return new Promise(function (res, rej) {\n    chrome.runtime.sendMessage({ method: \"getItem\", key: key }, function (\n      response\n    ) {\n      // キーを元にオブジェクトを作成しtrue or false を返却\n      res({\n        [key]: response.data,\n      });\n    });\n  });\n}\n\nfunction createPromiseArray() {\n  const promiseArr = [];\n  for (const i in _const__WEBPACK_IMPORTED_MODULE_0__[\"selectorParams\"]) {\n    promiseArr.push(getLocalStorageData(i));\n  }\n  return promiseArr;\n}\n\n\n\n\n//# sourceURL=webpack:///./src/assets/util.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getLocalStorageData\", function() { return getLocalStorageData; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"createPromiseArray\", function() { return createPromiseArray; });\n/* harmony import */ var _const__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./const */ \"./src/assets/const.js\");\n\nfunction getLocalStorageData(key) {\n  return new Promise(function (res, rej) {\n    chrome.runtime.sendMessage({ method: \"getItem\", key: key }, function (\n      response\n    ) {\n      // キーを元にオブジェクトを作成しtrue or false を返却\n      res({\n        [key]: response.data,\n      });\n    });\n  });\n}\n\nfunction createPromiseArray() {\n  const promiseArr = [];\n  for (const i in _const__WEBPACK_IMPORTED_MODULE_0__[\"selectorParams\"]) {\n    promiseArr.push(getLocalStorageData(i));\n  }\n  return promiseArr;\n}\n\n\n\n\n//# sourceURL=webpack:///./src/assets/util.js?");
 
 /***/ }),
 

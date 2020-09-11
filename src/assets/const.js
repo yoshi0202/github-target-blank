@@ -4,6 +4,11 @@ const selectorParams = {
   conversationLinks: ".markdown-body p a", // Conversation links
 };
 
-module.exports = {
-  selectorParams: selectorParams,
+const observerSettings = {
+  selector: "js-repo-pjax-container",
+  config: {
+    childList: true,
+  },
 };
+
+export { selectorParams, observerSettings };
