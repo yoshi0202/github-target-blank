@@ -10,11 +10,14 @@
       .container-fluid {
         width: 300px;
       }
+      label {
+        cursor: pointer;
+      }
     </style>
   </head>
   <body class="bg-light">
     <nav class="navbar-dark bg-dark">
-      <span class="navbar-brand mb-0 h1">GitHub-target-blank</span>
+      <span class="navbar-brand mb-0 h1 px-2">GitHub-target-blank</span>
     </nav>
     <div class="body-inner">
       <div class="container-fluid py-2">
@@ -26,49 +29,40 @@
         </div>
 
         <div class="m-0 h5">Pull requests</div>
-        <div>
-          <label class="m-0 font-weight-light" for="pullRequest">
-            <div
-              class="d-flex justify-content-between align-items-center ml-4 mr-2 pt-1"
-            >
-              <span>Tabs</span>
-              <input type="checkbox" id="pullRequest" name="pullRequest" />
-            </div>
-          </label>
-        </div>
-        <div
-          class="d-flex justify-content-between align-items-center ml-4 mr-2 pt-1"
-        >
-          <input type="checkbox" id="pullRequest" name="pullRequest" />
-        </div>
+        <label class="m-0 font-weight-light w-100" for="pullRequest">
+          <div
+            class="d-flex justify-content-between align-items-center ml-4 mr-2 pt-1"
+          >
+            <span>Tabs</span>
+            <input type="checkbox" id="pullRequest" name="pullRequest" />
+          </div>
+        </label>
         <span class="m-0 h5">In Repository</span>
-        <div
-          class="d-flex justify-content-between align-items-center ml-4 mr-2 pt-1"
-        >
-          <span>
-            <label class="m-0 font-weight-light" for="repositoryNavbar"
-              >Navbar</label
-            ></span
+        <label class="m-0 font-weight-light w-100" for="repositoryNavbar">
+          <div
+            class="d-flex justify-content-between align-items-center ml-4 mr-2 pt-1"
           >
-          <input
-            type="checkbox"
-            id="repositoryNavbar"
-            name="repositoryNavbar"
-          />
-        </div>
+            <span>NavBar</span>
+            <input
+              type="checkbox"
+              id="repositoryNavbar"
+              name="repositoryNavbar"
+            />
+          </div>
+        </label>
         <span class="m-0 h5">In Conversation</span>
-        <div
-          class="d-flex justify-content-between align-items-center ml-4 mr-2 pt-1"
-        >
-          <label class="m-0 font-weight-light" for="conversationLinks"
-            >Markdown Links</label
+        <label class="m-0 font-weight-light w-100" for="conversationLinks">
+          <div
+            class="d-flex justify-content-between align-items-center ml-4 mr-2 pt-1"
           >
-          <input
-            type="checkbox"
-            id="conversationLinks"
-            name="conversationLinks"
-          />
-        </div>
+            <span>Markdown Links</span>
+            <input
+              type="checkbox"
+              id="conversationLinks"
+              name="conversationLinks"
+            />
+          </div>
+        </label>
       </div>
     </div>
     <script src="popup.js"></script>
