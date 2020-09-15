@@ -12,16 +12,16 @@ class Content {
     for (const i of promiseRes) {
       const key = Object.keys(i)[0];
       if (!i[key]) continue;
-      let object = this.createElementObject(
+      let arr = this.createElementObject(
         document.querySelectorAll(selectorParams[key])
       );
-      this.createAddEventListenner(object);
+      this.createAddEventListenner(arr);
     }
   }
 
-  createAddEventListenner(object) {
-    for (const url in object) {
-      object[url].url = url;
+  createAddEventListenner(arr) {
+    for (const object of arr) {
+      object.element.url = object.url;
       const listenerFunction = function (e) {
         const evt = new MouseEvent("click", {
           metaKey: true, // MacOS
@@ -32,18 +32,22 @@ class Content {
         a.dispatchEvent(evt);
         e.preventDefault();
       };
-      object[url].removeEventListener("click", listenerFunction);
-      object[url].addEventListener("click", listenerFunction);
+      object.element.removeEventListener("click", listenerFunction);
+      object.element.addEventListener("click", listenerFunction);
     }
   }
 
   createElementObject(elements) {
-    const obj = {};
+    const arr = [];
     for (const element of elements) {
       if (!element.href) continue;
-      obj[element.href] = element;
+      const obj = {
+        element: element,
+        url: element.href,
+      };
+      arr.push(obj);
     }
-    return obj;
+    return arr;
   }
 
   createMutationObject() {
