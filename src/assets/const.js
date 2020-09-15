@@ -2,6 +2,7 @@ const selectorParams = {
   pullRequest: "a.tabnav-tab", // Pull Request navbar
   repositoryNavbar: "a.js-responsive-underlinenav-item", // Repository navbar
   conversationLinks: ".markdown-body p a", // Conversation links
+  commitLink: "code .link-gray", // commitLink(gray-link)
 };
 
 const observerSettings = {
