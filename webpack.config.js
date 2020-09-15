@@ -3,6 +3,7 @@ module.exports = {
   entry: {
     content: "./src/content.js",
     popup: "./src/popup.js",
+    background: "./src/background.js",
   },
   output: {
     path: __dirname + "/dist",

@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <style>
+      .container-fluid {
+        width: 300px;
+      }
+      label {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body class="bg-light">
+    <nav class="navbar-dark bg-dark">
+      <span class="navbar-brand mb-0 h1 px-2">GitHub-target-blank</span>
+    </nav>
+    <div class="body-inner">
+      <div class="container-fluid py-2">
+        <div class="d-flex justify-content-between align-items-center pt-1">
+          <p class="h4">ScreenName</p>
+          <div class="text-center font-weight-light">
+            <div>on/off</div>
+          </div>
+        </div>
+
+        <div class="m-0 h5">Pull requests</div>
+        <label class="m-0 font-weight-light w-100" for="pullRequest">
+          <div
+            class="d-flex justify-content-between align-items-center ml-4 mr-2 pt-1"
+          >
+            <span>Tabs</span>
+            <input type="checkbox" id="pullRequest" name="pullRequest" />
+          </div>
+        </label>
+        <span class="m-0 h5">In Repository</span>
+        <label class="m-0 font-weight-light w-100" for="repositoryNavbar">
+          <div
+            class="d-flex justify-content-between align-items-center ml-4 mr-2 pt-1"
+          >
+            <span>NavBar</span>
+            <input
+              type="checkbox"
+              id="repositoryNavbar"
+              name="repositoryNavbar"
+            />
+          </div>
+        </label>
+        <span class="m-0 h5">In Conversation</span>
+        <label class="m-0 font-weight-light w-100" for="conversationLinks">
+          <div
+            class="d-flex justify-content-between align-items-center ml-4 mr-2 pt-1"
+          >
+            <span>Markdown Links</span>
+            <input
+              type="checkbox"
+              id="conversationLinks"
+              name="conversationLinks"
+            />
+          </div>
+        </label>
+        <span class="m-0 h5">Commit</span>
+        <label class="m-0 font-weight-light w-100" for="commitLink">
+          <div
+            class="d-flex justify-content-between align-items-center ml-4 mr-2 pt-1"
+          >
+            <span>CommitLink</span>
+            <input type="checkbox" id="commitLink" name="commitLink" />
+          </div>
+        </label>
+      </div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>
