@@ -4,7 +4,9 @@ import { selectorParams, observerSettings } from "./assets/const";
 class Content {
   constructor() {
     this.promiseArr = createPromiseArray();
+    this.observer = this.createMutationObserver();
     this.createMutationObject();
+    this.createDetailToggleEvt();
   }
   async main() {
     const promiseRes = await Promise.all(this.promiseArr);
@@ -51,12 +53,27 @@ class Content {
   }
 
   createMutationObject() {
-    const target = document.getElementById(observerSettings.selector);
+    for (const o of observerSettings.selector) {
+      let target = document.querySelector(o);
+      if (target) {
+        this.observer.observe(target, observerSettings.config);
+      }
+    }
+  }
+
+  createMutationObserver() {
+    return new MutationObserver(() => {
+      this.main();
+    });
+  }
+  createDetailToggleEvt() {
+    const target = document.querySelector(
+      ".commit-build-statuses.details-overlay.details-reset.js-dropdown-details.hx_dropdown-fullscreen"
+    );
     if (target) {
-      const observer = new MutationObserver((mutations) => {
+      target.addEventListener("toggle", function (e) {
         this.main();
       });
-      observer.observe(target, observerSettings.config);
     }
   }
 }
